@@ -2,9 +2,13 @@
 
 This project demonstrates the use of Angular Signals alongside RxJS for efficient state management and reactive programming in Angular applications.
 
+
 ## Project Overview
 
-This Angular application showcases a product management system with features like fetching products, adding them to a cart, and managing the cart state using both RxJS and Angular Signals.
+- This Angular application showcases a product management system with features like fetching products,showing details and using both RxJS and Angular Signals.
+- Converting Observables in to Signals.
+- Demonstrate different subjects in the RxJS.
+
 ## Key Learnings
 
 - Implementing and using Angular Signals for state management
