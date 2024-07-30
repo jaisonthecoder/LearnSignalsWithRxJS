@@ -1,4 +1,4 @@
-# Learn Signals with RxJS
+# Learn Signals with RxJS - Angular V.18
 
 This project demonstrates the use of Angular Signals alongside RxJS for efficient state management and reactive programming in Angular applications.
 
