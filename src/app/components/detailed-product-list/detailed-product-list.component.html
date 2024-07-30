@@ -1,0 +1,40 @@
+<h2>Product Management</h2>
+
+<h3>All Products</h3>
+<ul>
+  <li *ngFor="let product of products">
+    {{ product.title }} - ${{ product.price }}
+    <button (click)="viewProduct(product.id)">View</button>
+    <button (click)="deleteProduct(product.id)">Delete</button>
+  </li>
+</ul>
+
+<h3>Single Product View</h3>
+<div *ngIf="selectedProduct">
+  <h4>{{ selectedProduct.title }}</h4>
+  <p>Price: ${{ selectedProduct.price }}</p>
+  <p>Description: {{ selectedProduct.description }}</p>
+  <p>Category: {{ selectedProduct.category }}</p>
+  <img [src]="selectedProduct.image" [alt]="selectedProduct.title" class="product-image">
+</div>
+
+<h3>Add New Product</h3>
+<form (ngSubmit)="addProduct()">
+  <input [(ngModel)]="newProduct.title" name="title" placeholder="Title" required>
+  <input [(ngModel)]="newProduct.price" name="price" type="number" placeholder="Price" required>
+  <input [(ngModel)]="newProduct.description" name="description" placeholder="Description" required>
+  <input [(ngModel)]="newProduct.category" name="category" placeholder="Category" required>
+  <input [(ngModel)]="newProduct.image" name="image" placeholder="Image URL" required>
+  <button type="submit">Add Product</button>
+</form>
+
+<h3>Update Product</h3>
+<form (ngSubmit)="updateProduct()">
+  <input [(ngModel)]="updateProductId" name="updateProductId" type="number" placeholder="Product ID" required>
+  <input [(ngModel)]="updatedProduct.title" name="updateTitle" placeholder="New Title">
+  <input [(ngModel)]="updatedProduct.price" name="updatePrice" type="number" placeholder="New Price">
+  <input [(ngModel)]="updatedProduct.description" name="updateDescription" placeholder="New Description">
+  <input [(ngModel)]="updatedProduct.category" name="updateCategory" placeholder="New Category">
+  <input [(ngModel)]="updatedProduct.image" name="updateImage" placeholder="New Image URL">
+  <button type="submit">Update Product</button>
+</form>
