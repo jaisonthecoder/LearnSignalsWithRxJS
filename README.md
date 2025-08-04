@@ -77,7 +77,7 @@ Copy
 4. Run the development server:
 ng serve
 Copy
-5. Open your browser and navigate to `http://localhost:4200`
+5. Open your browser and navigate to `http://localhost:5500`
 
 ## Project Structure
 
@@ -162,7 +162,7 @@ Copy3. Install dependencies:
 npm install
 Copy4. Run the development server:
 ng serve
-Copy5. Open your browser and navigate to `http://localhost:4200`
+Copy5. Open your browser and navigate to `http://localhost:5500`
 
 
 
