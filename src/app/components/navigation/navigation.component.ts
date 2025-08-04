@@ -17,6 +17,9 @@ import { RouterModule } from '@angular/router';
           <a routerLink="/dashboard" routerLinkActive="active" class="nav-link">
             📊 Dashboard
           </a>
+          <a routerLink="/interview" routerLinkActive="active" class="nav-link">
+            🎯 Interview Prep
+          </a>
           <a routerLink="/rxjs-base" routerLinkActive="active" class="nav-link">
             🔄 RxJS Demo
           </a>

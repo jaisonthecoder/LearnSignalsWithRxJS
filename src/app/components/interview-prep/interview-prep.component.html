@@ -1,0 +1,183 @@
+<div class="interview-prep-container">
+  <header class="prep-header">
+    <h1>🎯 RxJS vs Signals Interview Preparation</h1>
+    <p class="subtitle">Master the concepts, ace the interview</p>
+  </header>
+
+  <!-- Filters Section -->
+  <section class="filters-section">
+    <div class="filter-group">
+      <label>📚 Category:</label>
+      <select [value]="selectedCategory()" (change)="setCategory($any($event.target).value)">
+        <option *ngFor="let category of categories()" [value]="category">
+          {{ category | titlecase }}
+        </option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label>📊 Difficulty:</label>
+      <select [value]="selectedDifficulty()" (change)="setDifficulty($any($event.target).value)">
+        <option *ngFor="let difficulty of difficulties()" [value]="difficulty">
+          {{ difficulty | titlecase }}
+        </option>
+      </select>
+    </div>
+
+    <div class="filter-group search-group">
+      <label>🔍 Search:</label>
+      <input 
+        type="text" 
+        placeholder="Search questions, answers, or tags..."
+        [value]="searchTerm()"
+        (input)="setSearchTerm($any($event.target).value)">
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stat-card">
+      <div class="stat-number">{{ filteredQuestions().length }}</div>
+      <div class="stat-label">Questions</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">{{ categories().length - 1 }}</div>
+      <div class="stat-label">Categories</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">{{ difficulties().length - 1 }}</div>
+      <div class="stat-label">Levels</div>
+    </div>
+  </section>
+
+  <!-- Questions Section -->
+  <section class="questions-section">
+    <div *ngIf="filteredQuestions().length === 0" class="no-results">
+      <h3>🤷‍♂️ No questions found</h3>
+      <p>Try adjusting your filters or search term.</p>
+    </div>
+
+    <div *ngFor="let question of filteredQuestions(); trackBy: trackByQuestionId" 
+         class="question-card">
+      
+      <!-- Question Header -->
+      <div class="question-header" (click)="toggleQuestion(question.id)">
+        <div class="question-meta">
+          <span class="category-badge">{{ question.category }}</span>
+          <span class="difficulty-badge" [style.background-color]="getDifficultyColor(question.difficulty)">
+            {{ question.difficulty }}
+          </span>
+        </div>
+        
+        <h3 class="question-title">
+          <span class="question-number">#{{ question.id }}</span>
+          {{ question.question }}
+        </h3>
+        
+        <div class="expand-icon" [class.expanded]="expandedQuestion() === question.id">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Question Content -->
+      <div class="question-content" [class.expanded]="expandedQuestion() === question.id">
+        <div class="answer-section">
+          <h4>📝 Answer:</h4>
+          <div class="answer-text" [innerHTML]="formatAnswer(question.answer)"></div>
+        </div>
+
+        <div *ngIf="question.codeExample" class="code-section">
+          <h4>💻 Code Example:</h4>
+          <pre class="code-block"><code>{{ question.codeExample }}</code></pre>
+        </div>
+
+        <div class="tags-section">
+          <h4>🏷️ Tags:</h4>
+          <div class="tags-container">
+            <span *ngFor="let tag of question.tags" class="tag">{{ tag }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Study Guide Section -->
+  <section class="study-guide">
+    <h2>📖 Study Guide & Quick Reference</h2>
+    
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h3>🔥 Key Concepts</h3>
+        <ul>
+          <li><strong>Signals:</strong> Synchronous reactive primitives</li>
+          <li><strong>Computed:</strong> Derived state calculations</li>
+          <li><strong>Effect:</strong> Side effect handling</li>
+          <li><strong>WritableSignal:</strong> Mutable signal state</li>
+          <li><strong>ReadonlySignal:</strong> Immutable signal access</li>
+        </ul>
+      </div>
+
+      <div class="guide-card">
+        <h3>⚡ Performance Tips</h3>
+        <ul>
+          <li>Use computed() for derived state</li>
+          <li>Prefer signals for local state</li>
+          <li>Keep RxJS for async operations</li>
+          <li>Batch signal updates when possible</li>
+          <li>Use readonly() for external access</li>
+        </ul>
+      </div>
+
+      <div class="guide-card">
+        <h3>🚀 Migration Strategy</h3>
+        <ul>
+          <li>Start with simple component state</li>
+          <li>Convert BehaviorSubject to signal</li>
+          <li>Replace pipe() with computed()</li>
+          <li>Use effect() for side effects</li>
+          <li>Keep async operations in RxJS</li>
+        </ul>
+      </div>
+
+      <div class="guide-card">
+        <h3>🧪 Testing Approach</h3>
+        <ul>
+          <li>Use TestBed.runInInjectionContext()</li>
+          <li>Test signal updates directly</li>
+          <li>Mock signal dependencies</li>
+          <li>Verify computed calculations</li>
+          <li>Test effect side effects</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interview Tips -->
+  <section class="interview-tips">
+    <h2>💡 Interview Success Tips</h2>
+    
+    <div class="tips-grid">
+      <div class="tip-card">
+        <h3>🎯 Technical Focus</h3>
+        <p>Emphasize understanding of <strong>when to use which tool</strong>. Show knowledge of both RxJS and Signals strengths and weaknesses.</p>
+      </div>
+
+      <div class="tip-card">
+        <h3>🔧 Practical Examples</h3>
+        <p>Be ready to write code examples. Practice converting between RxJS and Signals approaches for common scenarios.</p>
+      </div>
+
+      <div class="tip-card">
+        <h3>📊 Performance Awareness</h3>
+        <p>Discuss performance implications. Mention change detection, memory usage, and when optimization matters.</p>
+      </div>
+
+      <div class="tip-card">
+        <h3>🏗️ Architecture Thinking</h3>
+        <p>Show understanding of how Signals fit into larger application architecture and state management patterns.</p>
+      </div>
+    </div>
+  </section>
+</div>
