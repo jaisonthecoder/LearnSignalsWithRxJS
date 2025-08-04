@@ -79,6 +79,24 @@ ng serve
 Copy
 5. Open your browser and navigate to `http://localhost:5500`
 
+## 🎯 Application Features
+
+### 📊 Interactive Dashboard (`/dashboard`)
+A comprehensive comparison dashboard featuring:
+- **Performance Metrics**: Visual charts showing RxJS vs Signals performance
+- **Feature Comparison**: Radar chart comparing different aspects
+- **Use Case Recommendations**: Decision matrix for technology selection
+- **Memory Usage Analysis**: Pie charts showing memory efficiency
+- **Bundle Size Impact**: Line graphs showing bundle size evolution
+
+### 🔄 RxJS Demonstrations
+- **Basic Demo** (`/rxjs-base`): Core RxJS concepts and operators
+- **Advanced Operators** (`/rxjs-operators`): Complex API workflows and transformations
+
+### 📡 Signals Implementation (`/signals`)
+- **Modern State Management**: Angular Signals approach
+- **Performance Optimized**: Fine-grained reactivity demonstrations
+
 ## Project Structure
 
 - `src/app/services`: Contains the `ProductService`, `ProductService`, and `SignalProductService`
